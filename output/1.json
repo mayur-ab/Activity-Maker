@@ -1,0 +1,83 @@
+[
+  {
+    "title": "Creature from a Spoon",
+    "category_id": 1,
+    "category_name": "Visual Perception",
+    "mechanic": "Hidden Object Hunt",
+    "subcategory": "Creature Discovery",
+    "goal": "Find the hidden creatures made from ordinary spoons.",
+    "age_min": 8,
+    "age_max": 14,
+    "difficulty": "medium",
+    "player_count": "1",
+    "duration_minutes": 20,
+    "components": "A detailed scene with several spoons disguised as creatures in a playful environment.",
+    "materials": "",
+    "setup": "Illustrate a colorful environment filled with various spoons that have been creatively altered to look like different creatures.",
+    "instructions": "1. Look closely at the scene. \n2. Find all the hidden creatures that are made from spoons. \n3. Write down their names based on their shapes and features.",
+    "rules": "- Only count the creatures that are clearly made from spoons. \n- Each creature should have a unique name.",
+    "puzzle_prompt": "In the scene, you see a garden with various objects. Among them, there are creatures that resemble animals but are actually made from spoons. For example, a spoon with a painted face could be a 'spoon cat'.",
+    "answer_or_solution": "The hidden creatures are: Spoon Cat, Spoon Bird, Spoon Dragon, and Spoon Fish. Each of these creatures is formed using spoons and can be identified by their distinct features like eyes, wings, or fins.",
+    "skills": [
+      "Observation",
+      "Creativity",
+      "Imaginative Play"
+    ],
+    "story_integration": "This activity invites children to explore the playful transformation of everyday objects into imaginative creatures, echoing the theme of invention and observation found in Oklut Poklut.",
+    "theme_note": "This activity follows the 'Creature-Maker's Notebook' theme by encouraging children to see ordinary spoons as potential sources of wonder."
+  },
+  {
+    "title": "Wobbly Orbits Maze",
+    "category_id": 1,
+    "category_name": "Visual Perception",
+    "mechanic": "Maze",
+    "subcategory": "Navigating Wobbly Paths",
+    "goal": "Guide your character through the maze to find the telescope.",
+    "age_min": 8,
+    "age_max": 14,
+    "difficulty": "medium",
+    "player_count": "1",
+    "duration_minutes": 15,
+    "components": "A maze illustration showing the wobbly orbit paths leading to a central telescope.",
+    "materials": "",
+    "setup": "Draw a maze with various paths that twist and turn to represent the wobbly orbit of Oklut Poklut, leading to the telescope.",
+    "instructions": "1. Start at the entrance of the maze. \n2. Trace a path through the maze to reach the telescope at the center without hitting any dead ends. \n3. Count how many turns you take to get there.",
+    "rules": "- You can only move up, down, left, or right. \n- No diagonal moves are allowed.",
+    "puzzle_prompt": "Navigate through the wobbly paths of Oklut Poklut's orbit to reach the telescope at the center. Be careful of the dead ends!",
+    "answer_or_solution": "The correct path to the telescope includes 12 turns. The player must trace through the maze accurately to reach the telescope without hitting any dead ends, successfully navigating the wobbly paths.",
+    "skills": [
+      "Spatial Awareness",
+      "Problem Solving",
+      "Critical Thinking"
+    ],
+    "story_integration": "This maze reflects the complex and wobbly orbital journey of Oklut Poklut, engaging children in the imaginative navigation of its environment.",
+    "theme_note": "This activity captures the essence of navigating the unique geography of Oklut Poklut, aligned with the 'Creature-Maker's Notebook' theme."
+  },
+  {
+    "title": "The Mystery of the Thumping Sound",
+    "category_id": 3,
+    "category_name": "Logic & Deduction",
+    "mechanic": "Who's Lying",
+    "subcategory": "Sound Investigation",
+    "goal": "Determine who is making the mysterious thumping sound.",
+    "age_min": 8,
+    "age_max": 14,
+    "difficulty": "medium",
+    "player_count": "1",
+    "duration_minutes": 15,
+    "components": "Three characters (Bindi, Orbit, and Dabba) each give a statement about the thumping sound.",
+    "materials": "",
+    "setup": "Create three character profiles with their statements about the thumping sound.",
+    "instructions": "1. Read each character's statement. \n2. Determine who is telling the truth based on the clues provided. \n3. Conclude who is responsible for the thumping sound.",
+    "rules": "- Only one character is telling the truth. \n- Use logic to deduce which statement is accurate.",
+    "puzzle_prompt": "Bindi says, \"It's not me, I’m busy filming!\" Orbit claims, \"Dabba is making the noise!\" Dabba insists, \"Bindi is lying!\" Who is telling the truth about the thumping sound?",
+    "answer_or_solution": "Orbit is telling the truth. Since Orbit says Dabba is making the noise and Dabba claims Bindi is lying, this creates a contradiction if Bindi were telling the truth. Therefore, Bindi is making the thumping noise.",
+    "skills": [
+      "Critical Thinking",
+      "Deductive Reasoning",
+      "Logic"
+    ],
+    "story_integration": "This activity draws from the mystery surrounding the thumping sound related to Bindi and her gang's film-making, creating an engaging deduction challenge for children.",
+    "theme_note": "This puzzle aligns with the 'Creature-Maker's Notebook' theme by invoking curiosity and investigation into the strange occurrences on Oklut Poklut."
+  }
+]

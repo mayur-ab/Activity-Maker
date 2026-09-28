@@ -1,0 +1,14 @@
+{
+  "name": "activity-maker",
+  "version": "1.0.0",
+  "description": "Generate themed activities and puzzles from source content. Reads play_db; never writes to it.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1",
+    "pg": "^8.23.0"
+  }
+}

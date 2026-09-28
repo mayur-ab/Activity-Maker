@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Activity Maker</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div>
+      <!-- <p class="eyebrow">play_db · read only</p> -->
+      <h1>Activity Maker</h1>
+      <!-- <p class="lede">Paste source content. The tool reads categories, mechanics, and a theme, then asks OpenRouter for activities and puzzles. Nothing is written back to the database.</p> -->
+    </div>
+  </header>
+
+  <main class="layout">
+    <form id="maker" class="panel">
+      <label>
+        Source content
+        <textarea id="content" rows="10" placeholder="Paste a story, article, lesson, or notes. Activities will be built around this." required></textarea>
+      </label>
+
+      <div class="grid">
+        <label>
+          Theme
+          <select id="theme" required></select>
+        </label>
+        <label>
+          Category
+          <select id="category">
+            <option value="">Best fit</option>
+          </select>
+        </label>
+        <label>
+          Mechanic
+          <select id="mechanic" disabled>
+            <option value="">Any in the category</option>
+          </select>
+        </label>
+        <label>
+          How many
+          <input id="count" type="number" min="1" max="5" value="3" />
+        </label>
+        <label>
+          Age from
+          <input id="ageMin" type="number" min="3" max="18" placeholder="6" />
+        </label>
+        <label>
+          Age to
+          <input id="ageMax" type="number" min="3" max="18" placeholder="10" />
+        </label>
+        <label>
+          Difficulty
+          <select id="difficulty">
+            <option value="">Model chooses</option>
+            <option>easy</option>
+            <option>easy-medium</option>
+            <option>medium</option>
+            <option>medium-hard</option>
+          </select>
+        </label>
+        <!-- <label>
+          Model
+          <input id="model" type="text" value="openai/gpt-4o-mini" />
+        </label> -->
+      </div>
+
+      <!-- <label id="keyLabel">
+        OpenRouter API key
+        <input id="apiKey" type="password" autocomplete="off" placeholder="sk-or-..." />
+      </label>
+      <label class="check">
+        <input id="remember" type="checkbox" />
+        Remember the key in this browser
+      </label> -->
+
+      <p id="themeNote" class="theme-note"></p>
+      <p id="error" class="error" hidden></p>
+      <button id="go" type="submit">Generate activities</button>
+    </form>
+
+    <section class="results" id="results">
+      <p class="empty">Generated activities will show up here.</p>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

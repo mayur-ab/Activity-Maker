@@ -32,6 +32,7 @@ app.post("/api/generate", async (req, res) => {
     const result = await generateActivities(req.body || {});
     res.json(result);
   } catch (error) {
+    console.error(error);
     const message = error.name === "TimeoutError"
       ? "OpenRouter took too long. Try again."
       : error.message;
@@ -40,6 +41,8 @@ app.post("/api/generate", async (req, res) => {
 });
 
 const port = Number(process.env.PORT) || 3847;
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Activity Maker listening on http://localhost:${port}`);
 });
+server.requestTimeout = 600000;
+server.headersTimeout = 600000;

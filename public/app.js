@@ -83,7 +83,10 @@ function field(card, label, value) {
 function renderActivities(payload) {
   results.innerHTML = "";
   const bar = el("div", "toolbar");
-  bar.appendChild(el("p", "meta", `${payload.theme.name} · ${payload.model}`));
+  const reviewStatus = payload.review_error
+    ? `Review skipped: ${payload.review_error}`
+    : "Reviewed";
+  bar.appendChild(el("p", "meta", `${payload.theme.name} · ${payload.model} · ${reviewStatus}`));
   const copy = el("button", "", "Copy JSON");
   copy.type = "button";
   copy.addEventListener("click", () => {
@@ -104,6 +107,9 @@ function renderActivities(payload) {
       activity.duration_minutes ? `${activity.duration_minutes} min` : "",
     ].filter(Boolean).join(" · ");
     card.appendChild(el("p", "meta", meta));
+    const review = Array.isArray(payload.review) ? payload.review[index] : null;
+    const fixes = review && Array.isArray(review.fixes) ? review.fixes.filter(Boolean) : [];
+    if (fixes.length) field(card, "Review", fixes.map(String).join("\n"));
     field(card, "Goal", activity.goal);
     field(card, "Puzzle", activity.puzzle_prompt);
     field(card, "Setup", activity.setup);

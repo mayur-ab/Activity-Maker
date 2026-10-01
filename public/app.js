@@ -92,11 +92,11 @@ function renderResult(payload) {
   results.innerHTML = "";
   const selection = payload.selection || {};
   const analysis = payload.analysis || {};
-  const activity = payload.activity || {};
   const themeName = selection.theme && selection.theme.name ? selection.theme.name : "";
+  const rejected = payload.status === "REJECTED";
   const reviewStatus = payload.review_error
     ? `Review skipped: ${payload.review_error}`
-    : "Reviewed";
+    : (payload.status || "Reviewed");
 
   const bar = el("div", "toolbar");
   bar.appendChild(el("p", "meta", [themeName, selection.category_name, selection.mechanic, payload.model, reviewStatus].filter(Boolean).join(" · ")));
@@ -104,6 +104,9 @@ function renderResult(payload) {
   copy.type = "button";
   copy.addEventListener("click", () => {
     navigator.clipboard.writeText(JSON.stringify({
+      status: payload.status,
+      ready_for_rendering: payload.ready_for_rendering,
+      issues: payload.issues,
       selection: payload.selection,
       analysis: payload.analysis,
       activity: payload.activity,
@@ -145,8 +148,20 @@ function renderResult(payload) {
   field(brief, "Recovery", analysis.how_the_child_recovers_the_fact);
   results.appendChild(brief);
 
+  if (rejected) {
+    const blocked = el("article", "card");
+    blocked.appendChild(el("h2", "", "Rejected"));
+    blocked.appendChild(el("p", "", "This draft failed the checks, so it is not an activity to print or illustrate."));
+    const issues = Array.isArray(payload.issues) ? payload.issues : [];
+    if (issues.length) {
+      field(blocked, "Blocking issues", issues.map((issue) => `${issue.type}: ${issue.details}`).join("\n"));
+    }
+    results.appendChild(blocked);
+  }
+
+  const activity = rejected ? (payload.rejected_activity || {}) : (payload.activity || {});
   const card = el("article", "card");
-  card.appendChild(el("h2", "", activity.title || "Activity"));
+  card.appendChild(el("h2", "", rejected ? "Rejected draft" : (activity.title || "Activity")));
   const meta = [
     activity.category_name,
     activity.mechanic,

@@ -73,6 +73,15 @@ function showTheme() {
     .join(" · ");
 }
 
+function formatItems(state) {
+  if (!state || typeof state !== "object" || !Array.isArray(state.items)) return "";
+  return state.items.map((item) => {
+    if (item == null) return "";
+    if (typeof item !== "object") return String(item);
+    return [item.name || item.object || item.label, item.role, item.detail || item.trait].filter(Boolean).join(" — ");
+  }).filter(Boolean).join("\n");
+}
+
 function field(card, label, value) {
   if (!value) return;
   card.appendChild(el("h3", "", label));
@@ -118,6 +127,11 @@ function renderResult(payload) {
     selection.mechanic,
     lockedLabels.length ? `locked: ${lockedLabels.join(", ")}` : "",
   ].filter(Boolean).join(" · ")));
+  const method = selection.activity_reference
+    ? `${selection.activity_reference.title} (${selection.activity_reference.activity_id})`
+    : "";
+  field(chosen, "Operation", selection.construction_method);
+  field(chosen, "Library method", method);
   field(chosen, "Why", selection.why);
   results.appendChild(chosen);
 
@@ -151,11 +165,24 @@ function renderResult(payload) {
   field(card, "Rules", activity.rules);
   field(card, "Components", activity.components);
   field(card, "Materials", activity.materials);
+  field(card, "Playable state", formatItems(activity.playable_state));
+  const link = activity.fact_connection;
+  if (link && typeof link === "object") {
+    field(card, "Fact connection", [link.child_action, link.fact, link.evidence].filter(Boolean).join("\n"));
+  }
   if (activity.solution && typeof activity.solution === "object") {
     field(card, "Route", activity.solution.correct_route);
+    field(card, "Dead ends", activity.solution.dead_ends);
     field(card, "Letters", activity.solution.collected_letters);
+    if (Array.isArray(activity.solution.pairs) && activity.solution.pairs.length) {
+      field(card, "Pairs", activity.solution.pairs.map((pair) => [pair.object, pair.trait].filter(Boolean).join(" — ")).join("\n"));
+    }
+    if (Array.isArray(activity.solution.differences) && activity.solution.differences.length) {
+      field(card, "Differences", activity.solution.differences.map(String).join("\n"));
+    }
     field(card, "Final answer", activity.solution.final_answer);
   }
+  field(card, "Artwork", activity.artwork_instructions);
   if (Array.isArray(activity.learning_through_play) && activity.learning_through_play.length) {
     field(card, "Learned by playing", activity.learning_through_play.join("\n"));
   }

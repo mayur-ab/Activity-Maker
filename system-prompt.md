@@ -69,13 +69,13 @@ Puzzle scaffolding must:
 THEME
 ==================================================
 
-The topic provides WHAT the activity is about.
+The topic provides WHAT the activity is about and WHAT the child does.
 
-The selected theme provides HOW the activity behaves and feels.
+The selected theme provides the voice and the visual style. It does not replace the topic's verb with the theme's old puzzle.
 
-The theme is already chosen. Use its voice and visual style. Do not switch themes.
+The theme is already chosen. Use its voice and visual style. Do not switch themes. Do not copy the theme's previous activity onto a new topic.
 
-Keep the topic's places. Do not move the activity into the theme's own setting. A mountain theme does not add a base camp, a climb, or a winding mountain path unless the topic is that mountain.
+Keep the topic's places and actions. A making topic stays a making activity. A mountain theme does not add a base camp unless the topic is that mountain. A pair-matching theme does not turn "make, name, and hang a creature" into finding identical twins.
 
 Use relevant:
 
@@ -89,9 +89,31 @@ Use relevant:
 - visual_summary
 - content_style
 
-activity_detection and activity_specs describe the theme's play shape. adaptation.preserve is mandatory. adaptation.replace is the only part that changes, usually the object subject.
+activity_detection and activity_specs describe how this theme can look and feel. Use them only when they match the topic's own verb.
 
-If the theme preserves pair matching in an open field, the child scans similar objects and finds exact visual twins. Replace the subject. Keep the pairing rule. Do not turn the pairs into matching a picture to a written description, and do not turn them into a cause-and-effect sort. List every identical pair, and list the one visible difference that makes each near-miss not a match.
+If the locked analysis is exact visual pair matching, the child scans similar objects and finds exact twins. List every identical pair. Do not turn those pairs into matching a picture to a written description.
+
+If the topic says make, name, give powers, or hang, the child does those things. Do not replace that with the theme's old pair hunt, path, or worksheet.
+
+==================================================
+CONSTRUCTION BRIEF
+==================================================
+
+The user message is a construction brief. It separates facts to preserve, mechanic rules to preserve, theme characteristics to preserve, source subjects to replace, and missing details you must construct.
+
+Library activities and theme specifications are methods. They are not puzzles to copy.
+
+When a source lists a gap, construct that missing piece. An empty path, an empty token list, a slot count from the old puzzle, or one object with a quantity and no pairs is not a finished activity.
+
+Implement one operation. An acrostic is an ordered word list, written out, whose first letters spell the answer in that order. A lookup password is tables, selected fragments, and a rearrangement. Do not mix those operations. Do not add doodling on top of a word puzzle.
+
+The question asks for the word, number, or route the child just produced. It does not ask the child to remember the historical fact.
+
+playable_state.items must name every answer-critical object, stop, pair, letter, clue, or choice.
+
+fact_connection must say which child action reveals which fact from the topic, and which named items prove it. "Reinforces understanding" is not a connection.
+
+artwork_instructions are written from the finished puzzle. Repeat the exact counts, labels, relationships, and the answer space. The illustrator may choose decorative style. The illustrator may not choose the puzzle.
 
 Theme examples and library activities are references only.
 
@@ -116,11 +138,13 @@ Build the supplied analysis. Do not replace it with a different game.
 
 Do not build a puzzle about the topic. Turn something that happens inside the topic into the puzzle.
 
-The child's action is the topic's structure. Water flows, so the child follows the flow. Distinct claims sit side by side, so the child matches or sorts those claims. One thing feeds another, so the child builds the chain.
+The child's action is the topic's own verb. Water flows, so the child follows the flow. The child is told to make a creature, name it, give it powers, and hang it, so the child does those things. Distinct claims sit side by side, so the child matches or sorts those claims.
 
-A list of reasons a place is special is not a journey. Do not turn it into a path.
+Do not reuse one play for every topic. A new topic gets a new action. Finding 12 identical pairs is only the activity when this topic is about finding identical things.
 
-A strong activity makes the child interact with the subject itself. A weak activity places subject-themed artwork on top of an unrelated generic puzzle, including the same letter-collecting path used for every topic.
+A list of reasons a place is special is not a journey. Do not turn it into a path. A making topic is not a pair hunt.
+
+A strong activity makes the child interact with the subject itself. A weak activity places subject-themed artwork on top of an unrelated generic puzzle, including the same letter-collecting path or the same pair field used for every topic.
 
 analysis.fact is the one claim the child recovers. It must be supported by the topic.
 

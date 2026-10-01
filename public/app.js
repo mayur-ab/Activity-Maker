@@ -33,10 +33,9 @@ function showError(message) {
 
 function fillThemes() {
   themeSelect.innerHTML = "";
+  themeSelect.appendChild(option("", "Best fit"));
   for (const theme of catalog.themes) {
-    const option = el("option", "", theme.name);
-    option.value = theme.slug;
-    themeSelect.appendChild(option);
+    themeSelect.appendChild(option(theme.slug, theme.name));
   }
   showTheme();
 }
@@ -80,53 +79,95 @@ function field(card, label, value) {
   card.appendChild(el("p", "", String(value)));
 }
 
-function renderActivities(payload) {
+function renderResult(payload) {
   results.innerHTML = "";
-  const bar = el("div", "toolbar");
+  const selection = payload.selection || {};
+  const analysis = payload.analysis || {};
+  const activity = payload.activity || {};
+  const themeName = selection.theme && selection.theme.name ? selection.theme.name : "";
   const reviewStatus = payload.review_error
     ? `Review skipped: ${payload.review_error}`
     : "Reviewed";
-  bar.appendChild(el("p", "meta", `${payload.theme.name} · ${payload.model} · ${reviewStatus}`));
+
+  const bar = el("div", "toolbar");
+  bar.appendChild(el("p", "meta", [themeName, selection.category_name, selection.mechanic, payload.model, reviewStatus].filter(Boolean).join(" · ")));
   const copy = el("button", "", "Copy JSON");
   copy.type = "button";
   copy.addEventListener("click", () => {
-    navigator.clipboard.writeText(JSON.stringify(payload.activities, null, 2));
+    navigator.clipboard.writeText(JSON.stringify({
+      selection: payload.selection,
+      analysis: payload.analysis,
+      activity: payload.activity,
+    }, null, 2));
     copy.textContent = "Copied";
   });
   bar.appendChild(copy);
   results.appendChild(bar);
 
-  payload.activities.forEach((activity, index) => {
-    const card = el("article", "card");
-    card.appendChild(el("h2", "", activity.title || `Activity ${index + 1}`));
-    const meta = [
-      activity.category_name,
-      activity.mechanic,
-      activity.difficulty,
-      activity.age_min && activity.age_max ? `ages ${activity.age_min}–${activity.age_max}` : "",
-      activity.duration_minutes ? `${activity.duration_minutes} min` : "",
-    ].filter(Boolean).join(" · ");
-    card.appendChild(el("p", "meta", meta));
-    const review = Array.isArray(payload.review) ? payload.review[index] : null;
-    const fixes = review && Array.isArray(review.fixes) ? review.fixes.filter(Boolean) : [];
-    if (fixes.length) field(card, "Review", fixes.map(String).join("\n"));
-    field(card, "Goal", activity.goal);
-    field(card, "Puzzle", activity.puzzle_prompt);
-    field(card, "Setup", activity.setup);
-    field(card, "Instructions", activity.instructions);
-    field(card, "Rules", activity.rules);
-    field(card, "Components", activity.components);
-    field(card, "Materials", activity.materials);
-    if (activity.answer_or_solution) {
-      card.appendChild(el("h3", "", "Answer"));
-      card.appendChild(el("p", "answer", String(activity.answer_or_solution)));
-    }
-    if (Array.isArray(activity.skills) && activity.skills.length) {
-      card.appendChild(el("p", "skills", activity.skills.join(" · ")));
-    }
-    field(card, "Theme", activity.theme_note || activity.story_integration);
-    results.appendChild(card);
-  });
+  const chosen = el("article", "card");
+  chosen.appendChild(el("h2", "", "Chosen for this topic"));
+  const locks = selection.locked_by_user || {};
+  const lockedLabels = [
+    locks.theme ? "theme" : "",
+    locks.category ? "category" : "",
+    locks.mechanic ? "mechanic" : "",
+  ].filter(Boolean);
+  chosen.appendChild(el("p", "meta", [
+    themeName,
+    selection.category_name,
+    selection.mechanic,
+    lockedLabels.length ? `locked: ${lockedLabels.join(", ")}` : "",
+  ].filter(Boolean).join(" · ")));
+  field(chosen, "Why", selection.why);
+  results.appendChild(chosen);
+
+  const brief = el("article", "card");
+  brief.appendChild(el("h2", "", "How the puzzle carries the fact"));
+  field(brief, "Subject", analysis.core_subject);
+  field(brief, "Affordance", analysis.play_affordance);
+  field(brief, "Fact", analysis.fact);
+  field(brief, "Question", analysis.fact_question);
+  field(brief, "Play", analysis.play_concept);
+  field(brief, "Recovery", analysis.how_the_child_recovers_the_fact);
+  results.appendChild(brief);
+
+  const card = el("article", "card");
+  card.appendChild(el("h2", "", activity.title || "Activity"));
+  const meta = [
+    activity.category_name,
+    activity.mechanic,
+    activity.difficulty,
+    activity.age_min && activity.age_max ? `ages ${activity.age_min}–${activity.age_max}` : "",
+    activity.duration_minutes ? `${activity.duration_minutes} min` : "",
+  ].filter(Boolean).join(" · ");
+  card.appendChild(el("p", "meta", meta));
+  const review = Array.isArray(payload.review) ? payload.review[0] : null;
+  const fixes = review && Array.isArray(review.fixes) ? review.fixes.filter(Boolean) : [];
+  if (fixes.length) field(card, "Review", fixes.map(String).join("\n"));
+  field(card, "Goal", activity.goal);
+  field(card, "Puzzle", activity.puzzle_prompt);
+  field(card, "Setup", activity.setup);
+  field(card, "Instructions", activity.instructions);
+  field(card, "Rules", activity.rules);
+  field(card, "Components", activity.components);
+  field(card, "Materials", activity.materials);
+  if (activity.solution && typeof activity.solution === "object") {
+    field(card, "Route", activity.solution.correct_route);
+    field(card, "Letters", activity.solution.collected_letters);
+    field(card, "Final answer", activity.solution.final_answer);
+  }
+  if (Array.isArray(activity.learning_through_play) && activity.learning_through_play.length) {
+    field(card, "Learned by playing", activity.learning_through_play.join("\n"));
+  }
+  if (activity.answer_or_solution) {
+    card.appendChild(el("h3", "", "Answer"));
+    card.appendChild(el("p", "answer", String(activity.answer_or_solution)));
+  }
+  if (Array.isArray(activity.skills) && activity.skills.length) {
+    card.appendChild(el("p", "skills", activity.skills.join(" · ")));
+  }
+  field(card, "Theme", activity.theme_note || activity.story_integration);
+  results.appendChild(card);
 }
 
 categorySelect.addEventListener("change", fillMechanics);
@@ -149,10 +190,9 @@ form.addEventListener("submit", async (event) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         content: document.querySelector("#content").value,
-        themeSlug: themeSelect.value,
+        themeSlug: themeSelect.value || null,
         categoryId: categorySelect.value || null,
         mechanic: mechanicSelect.value || null,
-        count: Number(document.querySelector("#count").value),
         ageMin: document.querySelector("#ageMin").value || null,
         ageMax: document.querySelector("#ageMax").value || null,
         difficulty: document.querySelector("#difficulty").value || null,
@@ -162,12 +202,12 @@ form.addEventListener("submit", async (event) => {
     });
     const payload = await response.json();
     if (!response.ok) throw new Error(payload.error || "Generation failed");
-    renderActivities(payload);
+    renderResult(payload);
   } catch (error) {
     showError(error.message);
   } finally {
     go.disabled = false;
-    go.textContent = "Generate activities";
+    go.textContent = "Generate activity";
   }
 });
 

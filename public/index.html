@@ -18,14 +18,14 @@
   <main class="layout">
     <form id="maker" class="panel">
       <label>
-        Source content
-        <textarea id="content" rows="10" placeholder="Paste a story, article, lesson, or notes. Activities will be built around this." required></textarea>
+        Topic or subject
+        <textarea id="content" rows="10" placeholder="A short paragraph about a topic or subject. For example: the Tungabhadra is a famous river in Hampi, India." required></textarea>
       </label>
 
       <div class="grid">
         <label>
           Theme
-          <select id="theme" required></select>
+          <select id="theme"></select>
         </label>
         <label>
           Category
@@ -38,10 +38,6 @@
           <select id="mechanic" disabled>
             <option value="">Any in the category</option>
           </select>
-        </label>
-        <label>
-          How many
-          <input id="count" type="number" min="1" max="5" value="3" />
         </label>
         <label>
           Age from
@@ -78,11 +74,11 @@
 
       <p id="themeNote" class="theme-note"></p>
       <p id="error" class="error" hidden></p>
-      <button id="go" type="submit">Generate activities</button>
+      <button id="go" type="submit">Generate activity</button>
     </form>
 
     <section class="results" id="results">
-      <p class="empty">Generated activities will show up here.</p>
+      <p class="empty">The activity will show up here.</p>
     </section>
   </main>
 

@@ -1,80 +1,50 @@
-[
-  {
-    "title": "Spot the Differences on Oklut Poklut",
+{
+  "selection": {
     "category_id": 1,
     "category_name": "Visual Perception",
     "mechanic": "Classic Spot-the-Difference",
-    "subcategory": "Visual Puzzle",
-    "goal": "Find the differences between two panels showing Oklut Poklut.",
-    "age_min": 8,
-    "age_max": 14,
-    "difficulty": "easy",
-    "player_count": "1",
-    "duration_minutes": 10,
-    "components": "Two panels depicting the same scene of Oklut Poklut with 5 differences between them.",
-    "materials": "",
-    "setup": "Place the two panels side by side on a flat surface.",
-    "instructions": "1. Look closely at both panels of Oklut Poklut.\n2. Identify the five differences between them.\n3. Circle or mark each difference you find.\n4. Check your answers against the provided answer sheet.",
-    "rules": "You can only count visible differences; no guessing is allowed.",
-    "puzzle_prompt": "The left panel shows a bustling scene of Oklut Poklut's inhabitants playing. The right panel shows the same scene but with 5 subtle differences. Can you spot them all?",
-    "answer_or_solution": "1. The tree on the left has 3 branches, but the right panel shows only 2.\n2. A child in a red shirt on the left is wearing a blue shirt on the right.\n3. A bird is perched on a different branch in each panel.\n4. The number of stars in the sky differs between the two panels (5 on the left, 4 on the right).\n5. A flower in the foreground has a different color in each panel (yellow on the left, pink on the right).",
-    "skills": [
-      "Observation",
-      "Attention to Detail"
-    ],
-    "story_integration": "This activity immerses children in the world of Oklut Poklut, encouraging them to closely examine the unique features of this flat planet and its inhabitants.",
-    "theme_note": "This puzzle fits within the 'CREATURE-MAKER'S NOTEBOOK' theme by inviting children to observe and engage with their environment in a playful manner."
+    "theme": {
+      "name": "CREATURE-MAKER'S NOTEBOOK",
+      "slug": "creature-makers-notebook"
+    },
+    "why": "This activity encourages children to engage with the visual representation of the Tungabhadra River and its engineering marvels, enhancing their observational skills and knowledge about the importance of water in a dry landscape.",
+    "locked_by_user": {
+      "category": false,
+      "mechanic": false,
+      "theme": false
+    }
   },
-  {
-    "title": "Count the Stars of Oklut Poklut",
+  "analysis": {
+    "fact": "The engineering genius of the time, including aqueducts and canals, helped water reach cities and farms, showcasing the importance of the Tungabhadra River.",
+    "fact_question": "What engineering methods helped distribute water from the Tungabhadra River?",
+    "play_concept": "Children will identify differences in two panels depicting scenes of the Tungabhadra River and its surrounding infrastructure, learning about the engineering methods used.",
+    "how_the_child_recovers_the_fact": "By spotting differences, children will uncover keywords related to the engineering methods (like 'aqueduct' or 'canal') that can be rearranged or combined to form a summary of the river's importance."
+  },
+  "activity": {
+    "title": "Spot the Water Wonders",
     "category_id": 1,
-    "category_name": "Number & Counting",
-    "mechanic": "Counting Scene Objects",
-    "subcategory": "Count the Stars",
-    "goal": "Count the stars visible in the night sky over Oklut Poklut.",
+    "category_name": "Visual Perception",
+    "mechanic": "Classic Spot-the-Difference",
+    "subcategory": "Water Engineering",
+    "goal": "Find the differences in the scenes to learn about ancient water engineering methods.",
     "age_min": 8,
     "age_max": 14,
     "difficulty": "easy-medium",
     "player_count": "1",
-    "duration_minutes": 10,
-    "components": "An illustration of Oklut Poklut’s night sky filled with stars and a few clouds.",
-    "materials": "",
-    "setup": "Display the illustration on a page or screen.",
-    "instructions": "1. Look at the illustration of Oklut Poklut’s night sky.\n2. Count only the stars that are visible and not covered by clouds.\n3. Write down the total number of stars you counted.",
-    "rules": "Only count the stars that are fully visible; do not include any that are obscured by clouds.",
-    "puzzle_prompt": "How many stars can you see in the sky over Oklut Poklut? Count only the ones that are clearly visible and write down your answer.",
-    "answer_or_solution": "11 stars. Eleven stars are clearly visible in the sky, while 3 stars are hidden behind clouds and should not be counted.",
-    "skills": [
-      "Counting",
-      "Critical Thinking"
-    ],
-    "story_integration": "This activity encourages children to engage with the celestial aspects of Oklut Poklut as they explore its unique sky, fostering curiosity about the planet's environment and inhabitants.",
-    "theme_note": "This puzzle aligns with the 'CREATURE-MAKER'S NOTEBOOK' theme by prompting children to observe and engage deeply with their surroundings."
-  },
-  {
-    "title": "The Creative Creature Maker",
-    "category_id": 1,
-    "category_name": "Word Puzzles",
-    "mechanic": "Hidden Word Sentence",
-    "subcategory": "Invent Your Creature",
-    "goal": "Create a new creature by transforming an ordinary object and revealing its name through a riddle.",
-    "age_min": 8,
-    "age_max": 14,
-    "difficulty": "medium",
-    "player_count": "1",
     "duration_minutes": 15,
-    "components": "A riddle that describes a transformation of an ordinary object into a creature.",
+    "components": "Two panels depicting scenes of the Tungabhadra River with aqueducts, canals, and stepped tanks, each containing 8 differences; a question line for the answer.",
     "materials": "",
-    "setup": "Present the riddle on a page along with a blank space for the child's answer.",
-    "instructions": "1. Read the riddle carefully.\n2. Think about the ordinary object mentioned and how it could transform into a creature.\n3. Write down the name of your invented creature based on the clues in the riddle.",
-    "rules": "Your creature's name must incorporate at least one feature of the ordinary object transformed.",
-    "puzzle_prompt": "I start as something plain, but add some wings and a tail, I can fly around, but my name will change without fail. What am I?",
-    "answer_or_solution": "A 'Flying Bookworm'! The ordinary object is a book, and by adding wings and a tail, it transforms into a whimsical creature that can fly around.",
+    "setup": "Place the two illustrated panels side by side on the page.",
+    "instructions": "1. Study the two scenes carefully.\n2. Look for 8 differences between them.\n3. Each difference will reveal a keyword about the engineering methods used with the Tungabhadra River.\n4. Write down each keyword as you find it.\n5. After finding all differences, rearrange the keywords to answer the question below.",
+    "rules": "You must find all 8 differences to complete the activity. Each difference relates to key engineering methods.",
+    "puzzle_prompt": "Look at the two panels of the Tungabhadra River scene. What engineering methods helped distribute water from the Tungabhadra River? (Fill in the answer below.)\n\n__________________________________________________",
+    "answer_or_solution": "The engineering genius of the time, including aqueducts and canals, helped water reach cities and farms, showcasing the importance of the Tungabhadra River. By spotting differences, children will uncover keywords like 'aqueduct', 'canal', and 'stepped tank', which they can rearrange to summarize the river's significance.",
     "skills": [
-      "Imagination",
-      "Creative Thinking"
+      "visual perception",
+      "observation",
+      "deduction"
     ],
-    "story_integration": "This activity allows children to immerse themselves in the inventive spirit of Oklut Poklut, encouraging them to think creatively about the world around them and the potential for transformation.",
-    "theme_note": "This puzzle is inspired by the 'CREATURE-MAKER'S NOTEBOOK' theme, promoting imaginative transformations of everyday objects."
+    "story_integration": "Children explore the importance of the Tungabhadra River and its engineering marvels by finding differences in two scenes, encouraging them to engage with the historical context and the significance of water distribution in ancient times.",
+    "theme_note": "This activity uses the 'Creature-Maker's Notebook' theme to transform visual observation into imaginative discoveries through engaging with the historical elements."
   }
-]
+}
